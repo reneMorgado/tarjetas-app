@@ -1,0 +1,89 @@
+@mixin card($type) {
+    width: 100%;
+    max-width: 368px;
+    transition: 300ms;
+    @media screen and (max-width: 575px) {
+        max-width: 288px;
+        height: 176px;
+    }
+    height: 208px;
+    border-radius: 16px;
+    @if $type == 'mastercard' {
+        background-color: #FF6961;
+    } @else if $type == 'visa' {
+        background-color: #005187;
+    } @else if $type == 'amex' {
+        background-color: #C4D6C3;
+    } @else if $type == 'empty' {
+        background-color: #606676;
+    }
+}
+
+@mixin text($size) {
+    font-family: "Roboto Mono", monospace;
+    color: #EFF0EB;
+    font-size: $size;
+}
+
+.cardItem {
+    &--mastercard{
+        @include card('mastercard')
+    }
+    &--visa{
+        @include card('visa')
+    }
+    &--amex{
+        @include card('amex')
+    }
+    &--empty{
+        @include card('empty')
+    }
+    &__image{
+        &--visa{
+            padding-top: 16px;
+            width: 88px;
+            padding-right: 8px;
+            @media screen and (max-width: 575px) {
+                width: 72px;
+            }
+        }
+        &--mastercard{
+            width: 96px;
+            @media screen and (max-width: 575px) {
+                width: 80px;
+            }
+        }
+        &--amex{
+            padding-right: 16px;
+            width: 86px;
+            @media screen and (max-width: 575px) {
+                width: 70px;
+            }
+        }
+        &--empty{
+            padding-right: 16px;
+            width: 100px;
+            @media screen and (max-width: 575px) {
+                width: 70px;
+            }
+        }
+    }
+    &__cardInfo{
+        justify-self: flex-end;
+        @media screen and (max-width: 575px) {
+            @include text(14px);
+        }
+    }
+    &__cardNumber{
+        @include text(18px);
+        @media screen and (max-width: 575px) {
+            @include text(14px);
+        }
+    }
+    &__cardOwner{
+        @include text(16px);
+        @media screen and (max-width: 575px) {
+            @include text(12px);
+        }
+    }
+}

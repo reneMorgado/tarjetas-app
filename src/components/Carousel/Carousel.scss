@@ -1,0 +1,22 @@
+.Carousel {
+    &__slide{
+        max-width: 368px !important;
+        padding-bottom: 48px;
+    }
+    &__bullet{
+        padding: 2px;
+        width: 28px;
+        height: 28px;
+        color: white;
+        background-color: #708871;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        color: #708871 !important;
+    }
+    @media screen and (max-width: 575px) {
+        & .swiper-slide{
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
