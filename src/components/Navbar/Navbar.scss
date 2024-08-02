@@ -1,43 +1,74 @@
 .Navbar{
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    background-color: #708871;
-    color: #EFF0EB;
-    @media screen and (max-width: 575px) {
-        position: fixed;
-        justify-content: space-around;
-        bottom: 0;
+    height: 9rem;
+    @media screen and (max-width:768px) {
+        height: 6rem;
     }
-    &__link{
-        font-size: 16px;
-        text-decoration: none;
-        margin-left: 24px;
-        color: black;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        @media screen and (max-width: 575px) {
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            margin-left: 0px;
-            font-size: 14px;
+    &__logo{
+        & p {
+            font-size: 1.8rem;
+            @media screen and (max-width:768px) {
+                font-size: 1.4rem;
+            }
         }
-        &--active{
-            @extend .Navbar__link;
-            color: #FEF3E2;
+    }
+    &__links{
+        & a {
+            color: black;
+            text-decoration: none;
+            &:hover {
+                color: rgb(246,101,149);
+            }
+            & span {
+                font-size: 1.2rem;
+                @media screen and (max-width:768px) {
+                    font-size: 1rem;
+                }
+            }
         }
-        &:hover{
-            color: #FEF3E2;
+        & .active {
+            color: rgb(246,101,149);
         }
+    }
+    &__profile{
         & img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-            @media screen and (max-width: 575px) {
-                margin-right: 0px;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 25px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+    }
+    &__button{
+        border: none;
+        background-color: transparent;
+        & img {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+    &__navigation{
+        &--closed{
+            @extend .Navbar__navigation;
+            width: 0px;
+        }
+        background: linear-gradient(122deg, rgba(251,201,142,1) 0%, rgba(248,158,144,1) 50%, rgba(246,101,149,1) 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        transition: 200ms;
+        z-index: 1000;
+        &--header{
+            & p {
+                color: #FAF8F6;
+            }
+            border-bottom: 1px solid #FAF8F6;
+        }
+        &--links{
+            @extend .Navbar__links;
+            & a {
+                color: #FAF8F6;
             }
         }
     }
