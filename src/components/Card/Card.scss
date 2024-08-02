@@ -1,89 +1,117 @@
+@import '../../sass/variables';
+
 @mixin card($type) {
     width: 100%;
-    max-width: 368px;
-    transition: 300ms;
-    @media screen and (max-width: 575px) {
-        max-width: 288px;
-        height: 176px;
+    max-width: 23 * $rem;
+    transition: $transition;
+
+    @media screen and (max-width: $bp-sm) {
+        max-width: 18 * $rem;
+        height: 11 * $rem;
     }
-    height: 208px;
-    border-radius: 16px;
-    @if $type == 'mastercard' {
-        background-color: #FF6961;
-    } @else if $type == 'visa' {
-        background-color: #005187;
-    } @else if $type == 'amex' {
-        background-color: #C4D6C3;
-    } @else if $type == 'empty' {
-        background-color: #606676;
+
+    height: 13 * $rem;
+    border-radius: $radius-1;
+
+    @if $type =='mastercard' {
+        background-color: $mastercard-color;
+    }
+
+    @else if $type =='visa' {
+        background-color: $visa-color;
+    }
+
+    @else if $type =='amex' {
+        background-color: $amex-color;
+    }
+
+    @else if $type =='empty' {
+        background-color: $empty-color;
     }
 }
 
 @mixin text($size) {
-    font-family: "Roboto Mono", monospace;
-    color: #EFF0EB;
+    font-family: $text-card;
+    color: $white;
     font-size: $size;
 }
 
 .cardItem {
-    &--mastercard{
+    &--mastercard {
         @include card('mastercard')
     }
-    &--visa{
+
+    &--visa {
         @include card('visa')
     }
-    &--amex{
+
+    &--amex {
         @include card('amex')
     }
-    &--empty{
+
+    &--empty {
         @include card('empty')
     }
-    &__image{
-        &--visa{
-            padding-top: 16px;
-            width: 88px;
-            padding-right: 8px;
-            @media screen and (max-width: 575px) {
-                width: 72px;
+
+    &__image {
+        &--visa {
+            padding-top: $rem;
+            width: 5.5*$rem;
+            padding-right: $rem;
+
+            @media screen and (max-width: $bp-sm) {
+                width: 4.5 * $rem;
             }
         }
-        &--mastercard{
-            width: 96px;
-            @media screen and (max-width: 575px) {
-                width: 80px;
+
+        &--mastercard {
+            width: 6 * $rem;
+
+            @media screen and (max-width: $bp-sm) {
+                width: 5 * $rem;
             }
         }
-        &--amex{
-            padding-right: 16px;
-            width: 86px;
-            @media screen and (max-width: 575px) {
-                width: 70px;
+
+        &--amex {
+            padding-right: $rem;
+            width: 5* $rem;
+
+            @media screen and (max-width: $bp-sm) {
+                width: 4* $rem;
             }
         }
-        &--empty{
-            padding-right: 16px;
-            width: 100px;
-            @media screen and (max-width: 575px) {
-                width: 70px;
+
+        &--empty {
+            padding-right: $rem;
+            width: 6 * $rem;
+
+            @media screen and (max-width: $bp-sm) {
+                width: 4 * $rem;
             }
         }
     }
-    &__cardInfo{
+
+    &__cardInfo {
         justify-self: flex-end;
-        @media screen and (max-width: 575px) {
-            @include text(14px);
+
+        @media screen and (max-width: $bp-sm) {
+            @include text($text-sm);
         }
     }
-    &__cardNumber{
-        @include text(18px);
-        @media screen and (max-width: 575px) {
-            @include text(14px);
+
+    &__cardNumber {
+        @include text($text-md);
+
+        @media screen and (max-width: $bp-sm) {
+            @include text($text-sm);
         }
     }
-    &__cardOwner{
-        @include text(16px);
-        @media screen and (max-width: 575px) {
-            @include text(12px);
+
+    &__cardOwner {
+        @include text($text-normal);
+
+        @media screen and (max-width: $bp-sm) {
+            @include text($text-xs);
         }
     }
 }

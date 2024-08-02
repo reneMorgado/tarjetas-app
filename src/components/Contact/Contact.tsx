@@ -1,18 +1,20 @@
-import { useFormik } from 'formik';
-import Swal from 'sweetalert2';
-import * as yup from 'yup';
+import { useFormik } from 'formik'; // Importa la biblioteca formik para el manejo de formularios.
+import Swal from 'sweetalert2'; // Importa sweetalert2 para mostrar alertas agradables.
+import * as yup from 'yup'; // Importa yup para la validación del esquema del formulario.
 
 const Contact = () => {
 
+    // Función que se llama al enviar el formulario.
     const handleSubmit = (values: object, formikHelpers: any): void => {
-        console.log(values)
-        formikHelpers.resetForm()
+        console.log(values); // Muestra los valores del formulario en la consola.
+        formikHelpers.resetForm(); // Reinicia el formulario después del envío.
         Swal.fire({
-            title: "Mensaje enviado con éxito",
+            title: "Mensaje enviado con éxito", // Muestra una alerta de éxito.
             icon: "success"
         });
     }
 
+    // Define el esquema de validación para el formulario.
     const validationSchema: object = yup.object({
         name: yup.string().max(12, "Introduce un nombre válido").required("El campo es requerido"),
         lastName: yup.string().max(12, "Introduce un apellido válido").required("El campo es requerido"),
@@ -21,6 +23,7 @@ const Contact = () => {
         message: yup.string().max(250, "Máximo 250 caracteres").required("El campo es requerido"),
     });
 
+    // Define los valores iniciales del formulario.
     const initialValues = {
         name: '',
         lastName: '',
@@ -29,17 +32,21 @@ const Contact = () => {
         message: ''
     }
 
+    // Configura Formik con los valores iniciales, el esquema de validación y la función de envío.
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: validationSchema,
         onSubmit: (values, formikHelpers: any) => handleSubmit(values, formikHelpers)
     });
 
-    const validateRegexNumber = (value: string) => /^\d+$/.test(value) || value.length === 0
+    // Función para validar si el valor contiene solo números.
+    const validateRegexNumber = (value: string) => /^\d+$/.test(value) || value.length === 0;
 
-    const validateNumberLength = (value: string, length: number) => value.length <= length
+    // Función para validar la longitud del valor.
+    const validateNumberLength = (value: string, length: number) => value.length <= length;
 
-    const validateRegexAlpha = (value: string) => /^[A-Za-z\s]+$/.test(value) || value.length === 0
+    // Función para validar si el valor contiene solo letras y espacios.
+    const validateRegexAlpha = (value: string) => /^[A-Za-z\s]+$/.test(value) || value.length === 0;
 
     return (
         <form onSubmit={formik.handleSubmit}>
@@ -109,4 +116,4 @@ const Contact = () => {
     )
 }
 
-export default Contact
+export default Contact // Exporta el componente Contact.

@@ -1,20 +1,26 @@
+@import '../../sass/variables';
+
 .Carousel {
-    &__slide{
-        max-width: 368px !important;
-        padding-bottom: 48px;
+    &__slide {
+        max-width: 23 * $rem !important;
+        padding-bottom: 3 * $rem;
     }
-    &__bullet{
+
+    &__bullet {
         padding: 2px;
         width: 28px;
         height: 28px;
-        color: white;
-        background-color: #f66595;
+        color: $white;
+        background-color: $salmon-color;
     }
-    .swiper-button-prev, .swiper-button-next {
-        color: #f66595 !important;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: $salmon-color !important;
     }
-    @media screen and (max-width: 575px) {
-        & .swiper-slide{
+
+    @media screen and (max-width: $bp-sm) {
+        & .swiper-slide {
             display: flex;
             justify-content: center;
         }

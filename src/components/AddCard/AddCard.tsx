@@ -1,54 +1,66 @@
-import { useFormik } from 'formik';
-import Swal from 'sweetalert2';
-import * as yup from 'yup';
-import Card from '../Card/Card';
-import { v4 as uuid } from 'uuid'
-import { useContext } from 'react';
-import { cardsContext } from '../../context/CardsContext';
-import { CardInterface } from '../../interfaces/Interfaces';
+import { useFormik } from 'formik'; // Importa la biblioteca formik para el manejo de formularios.
+import Swal from 'sweetalert2'; // Importa sweetalert2 para mostrar alertas agradables.
+import * as yup from 'yup'; // Importa yup para la validación del esquema del formulario.
+import Card from '../Card/Card'; // Importa el componente Card.
+import { v4 as uuid } from 'uuid'; // Importa uuid para generar identificadores únicos.
+import { useContext } from 'react'; // Importa useContext para utilizar contextos de React.
+import { cardsContext } from '../../context/CardsContext'; // Importa el contexto de las tarjetas.
+import { CardInterface } from '../../interfaces/Interfaces'; // Importa la interfaz de tarjeta.
 
 const AddCard = () => {
 
-    const context = useContext(cardsContext)
+    const context = useContext(cardsContext); // Usa el contexto de tarjetas.
 
     const handleSubmit = (values: CardInterface, formikHelpers: any): void => {
-        const newCard = { ...values, id: uuid() }
-        formikHelpers.resetForm()
-        context?.dispatch({type: 'ADD_CARD', payload: newCard})
-        formikHelpers.setFieldValue('logo', 'empty')
+        // Maneja el envío del formulario.
+        const newCard = { ...values, id: uuid() }; // Crea una nueva tarjeta con un ID único.
+        formikHelpers.resetForm(); // Resetea el formulario.
+        context?.dispatch({ type: 'ADD_CARD', payload: newCard }); // Despacha la acción para agregar la tarjeta.
+        formikHelpers.setFieldValue('logo', 'empty'); // Resetea el campo 'logo' del formulario.
         Swal.fire({
             title: "Tarjeta guardada con éxito",
             icon: "success"
-        });
-    }
+        }); // Muestra una alerta de éxito.
+    };
 
     const validationSchema: object = yup.object({
-        cardNumber: yup.string().max(16, "Número de tarjeta incorrecto").min(16, "Número de tarjeta incorrecto").required("El campo es requerido"),
-        dueDate: yup.string().min(5, "Fecha de vencimiento incorrecta").required("El campo es requerido").max(5, "Fecha de vencimiento incorrecta").matches(new RegExp('^(0[1-9]|1[012])[/.](2[3-9]|[3-9][0-9])$'), "Fecha de vencimiento incorrecta"),
-        owner: yup.string().max(30, "Introduce un nombre válido").required("El campo es requerido"),
-        logo: yup.string().oneOf(['amex', 'mastercard', 'visa']).required("El campo es requerido")
+        // Define el esquema de validación del formulario.
+        cardNumber: yup.string()
+            .max(16, "Número de tarjeta incorrecto")
+            .min(16, "Número de tarjeta incorrecto")
+            .required("El campo es requerido"),
+        dueDate: yup.string()
+            .min(5, "Fecha de vencimiento incorrecta")
+            .required("El campo es requerido")
+            .max(5, "Fecha de vencimiento incorrecta")
+            .matches(new RegExp('^(0[1-9]|1[012])[/.](2[3-9]|[3-9][0-9])$'), "Fecha de vencimiento incorrecta"),
+        owner: yup.string()
+            .max(30, "Introduce un nombre válido")
+            .required("El campo es requerido"),
+        logo: yup.string()
+            .oneOf(['amex', 'mastercard', 'visa'])
+            .required("El campo es requerido")
     });
 
     const initialValues = {
+        // Define los valores iniciales del formulario.
         cardNumber: '',
         dueDate: '',
         owner: '',
         logo: 'empty'
-    }
+    };
 
     const formik = useFormik({
+        // Configura formik con los valores iniciales, el esquema de validación y el manejador de envío.
         initialValues: initialValues,
         validationSchema: validationSchema,
         onSubmit: (values, formikHelpers: any) => handleSubmit(values, formikHelpers)
     });
 
-    const validateRegexNumber = (value: string) => /^\d+$/.test(value) || value.length === 0
-
-    const validateNumberLength = (value: string, length: number) => value.length <= length
-
-    const validateRegexDate = (value: string) => !(/[a-z]+/gi.test(value)) || value.length === 0
-
-    const validateRegexAlpha = (value: string) => /^[A-Za-z\s]+$/.test(value) || value.length === 0
+    const validateRegexNumber = (value: string) => /^\d+$/.test(value) || value.length === 0; // Valida que el valor contenga solo dígitos o esté vacío.
+    const validateNumberLength = (value: string, length: number) => value.length <= length; // Valida que la longitud del valor no exceda el límite.
+    const validateRegexDate = (value: string) => !(/[a-z]+/gi.test(value)) || value.length === 0; // Valida que el valor no contenga letras.
+    const validateRegexAlpha = (value: string) => /^[A-Za-z\s]+$/.test(value) || value.length === 0; // Valida que el valor contenga solo letras y espacios.
 
     return (
         <form className='FormGeneral' onSubmit={formik.handleSubmit}>
@@ -112,4 +124,4 @@ const AddCard = () => {
     )
 }
 
-export default AddCard
+export default AddCard // Exporta el componente AddCard

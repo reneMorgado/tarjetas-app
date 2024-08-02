@@ -1,12 +1,13 @@
-import MastercardLogo from './img/mastercard.svg'
-import VisaLogo from './img/visa.svg'
-import AmexLogo from './img/amex.svg'
-import EmptyLogo from './img/empty.svg'
-import { CardInterface } from '../../interfaces/Interfaces';
-import './Card.scss'
+import MastercardLogo from './img/mastercard.svg'; // Importa el logo de Mastercard.
+import VisaLogo from './img/visa.svg'; // Importa el logo de Visa.
+import AmexLogo from './img/amex.svg'; // Importa el logo de American Express.
+import EmptyLogo from './img/empty.svg'; // Importa un logo vacío.
+import { CardInterface } from '../../interfaces/Interfaces'; // Importa la interfaz de tarjeta.
+import './Card.scss'; // Importa los estilos CSS para el componente.
 
 const Card = ({ cardNumber, dueDate, owner, logo }: CardInterface) => {
 
+  // Función para obtener la ruta del logo de la tarjeta.
   const getCardLogo = (): string => {
     const routes: { [key: string]: string } = {
       'mastercard': MastercardLogo,
@@ -14,19 +15,22 @@ const Card = ({ cardNumber, dueDate, owner, logo }: CardInterface) => {
       'amex': AmexLogo,
       'empty': EmptyLogo
     }
-    return routes[logo] ?? routes['mastercard']
+    return routes[logo] ?? routes['mastercard'];
   }
 
+  // Función para formatear el número de la tarjeta.
   function formatCardNumber(cardNumber: string): string {
     return cardNumber.replace(/(.{4})/g, '$1 ').trim();
   }
 
+  // Función para obtener la clase CSS según el tipo de tarjeta.
   function getCardClass(type: string): string {
-    return 'cardItem--' + type
+    return 'cardItem--' + type;
   }
 
+  // Función para obtener la clase CSS de la imagen según el tipo de tarjeta.
   function getCardImageClass(type: string): string {
-    return 'cardItem__image--' + type
+    return 'cardItem__image--' + type;
   }
 
   return (
@@ -43,4 +47,4 @@ const Card = ({ cardNumber, dueDate, owner, logo }: CardInterface) => {
   )
 }
 
-export default Card
+export default Card // Exporta el componente Card.

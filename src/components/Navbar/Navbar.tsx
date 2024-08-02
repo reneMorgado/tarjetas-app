@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
-import './Navbar.scss'
-import { NavLink } from 'react-router-dom'
-import Profile from './img/profile.png'
-import Menu from './img/menu.svg'
-import Close from './img/close.svg'
+import React, { useState } from 'react'; // Importa React y el hook useState.
+import './Navbar.scss'; // Importa el archivo de estilos SCSS para el componente.
+import { NavLink } from 'react-router-dom'; // Importa NavLink para la navegación entre rutas.
+import Profile from './img/profile.png'; // Importa la imagen del perfil.
+import Menu from './img/menu.svg'; // Importa el icono de menú.
+import Close from './img/close.svg'; // Importa el icono de cerrar.
 
 const Navbar = () => {
 
-    const [showNavigation, setShowNavigation] = useState<boolean>(false)
+    // Estado que controla si el menú de navegación está visible o no.
+    const [showNavigation, setShowNavigation] = useState<boolean>(false);
 
+    // Función para alternar la visibilidad del menú de navegación.
     const toggleNavigation = (): void => {
-        setShowNavigation(!showNavigation)
-    }
-
+        setShowNavigation(!showNavigation);
+    };
 
     return (
         <div className="Navbar p-sm-0 p-4 d-flex justify-content-between justify-content-sm-around align-items-center">

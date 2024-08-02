@@ -1,19 +1,22 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react'; // Importa los componentes Swiper y SwiperSlide de Swiper para el carrusel.
+import { Pagination, Navigation } from 'swiper/modules'; // Importa los módulos de paginación y navegación para Swiper.
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/css'; // Importa los estilos CSS básicos de Swiper.
+import 'swiper/css/navigation'; // Importa los estilos CSS para la navegación de Swiper.
+import 'swiper/css/pagination'; // Importa los estilos CSS para la paginación de Swiper.
 
-import './Carousel.scss'
+import './Carousel.scss'; // Importa los estilos CSS personalizados para el carrusel.
 
-import Card from '../Card/Card';
-import { CarouselInterface, CardInterface } from '../../interfaces/Interfaces';
-import { useContext } from 'react';
-import { cardsContext } from '../../context/CardsContext';
+import Card from '../Card/Card'; // Importa el componente Card.
+import { CarouselInterface, CardInterface } from '../../interfaces/Interfaces'; // Importa las interfaces para las propiedades del carrusel y de las tarjetas.
+import { useContext } from 'react'; // Importa useContext para usar el contexto de React.
+import { cardsContext } from '../../context/CardsContext'; // Importa el contexto de tarjetas.
+
 
 const Carousel = ({ items }: CarouselInterface) => {
-    const context = useContext(cardsContext)
+
+    const context = useContext(cardsContext) // Usa el contexto de tarjetas para obtener el estado de las tarjetas.
+
     return (
         <Swiper
             slidesPerView={'auto'}
@@ -39,4 +42,4 @@ const Carousel = ({ items }: CarouselInterface) => {
     )
 }
 
-export default Carousel
+export default Carousel // Exporta el componente Carousel.

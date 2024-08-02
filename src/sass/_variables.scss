@@ -1,0 +1,33 @@
+// Rem
+$rem: 16px;
+
+// text size
+$text-md: 18px;
+$text-normal: $rem;
+$text-sm: 14px;
+$text-xs: 12px;
+
+//radius
+$radius-1: 25px;
+
+//transition
+$transition: 300ms;
+
+//colors
+$mastercard-color: #FF6961;
+$visa-color: #005187;
+$amex-color: #C4D6C3;
+$empty-color: #606676;
+$white: #EFF0EB;
+$black: #0000006f;
+$salmon-color: #f66595;
+$salmon-medium-color: rgba(248, 158, 144, 1);
+$salmon-light-color: rgba(251, 201, 142, 1);
+
+// breakpoints
+$bp-sm: 575px;
+$bp-md: 768px;
+
+// fonts
+$text-card: "Roboto Mono", monospace;
+$text-general: "Poppins", sans-serif;
