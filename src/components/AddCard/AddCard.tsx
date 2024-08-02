@@ -52,14 +52,14 @@ const AddCard = () => {
 
     return (
         <form className='FormGeneral' onSubmit={formik.handleSubmit}>
-            <h3 className='text-center mt-2 mb-4'>Agrega una nueva tarjeta</h3>
+            <h3 className='text-center mt-2 mb-4 text-salmon'>Agrega una nueva tarjeta</h3>
             <div className="d-flex justify-content-center my-4">
                 <Card cardNumber={formik.values.cardNumber} dueDate={formik.values.dueDate} owner={formik.values.owner} logo={formik.values.logo} />
             </div>
             <div className="row">
                 <div className="col-sm-6 col-12">
                     <div className="mb-3">
-                        <label htmlFor="cardNumber" className="form-label mb-1" >Número de tarjeta</label>
+                        <label htmlFor="cardNumber" className="form-label mb-1 text-salmon" >Número de tarjeta</label>
                         <input type="text" className="form-control" id="cardNumber" name="cardNumber" placeholder="A 16 dígitos" onChange={(e) => {
                             if (validateNumberLength(e.target.value, 16) && validateRegexNumber(e.target.value)) {
                                 formik.handleChange(e)
@@ -70,7 +70,7 @@ const AddCard = () => {
                 </div>
                 <div className="col-sm-6 col-12">
                     <div className="mb-3">
-                        <label htmlFor="dueDate" className="form-label mb-1">Fecha de vencimiento</label>
+                        <label htmlFor="dueDate" className="form-label mb-1 text-salmon">Fecha de vencimiento</label>
                         <input type="text" className="form-control" id="dueDate" name="dueDate" placeholder="MM/YY" onChange={(e) => {
                             if (validateNumberLength(e.target.value, 5) && validateRegexDate(e.target.value)) {
                                 formik.handleChange(e)
@@ -83,7 +83,7 @@ const AddCard = () => {
             <div className="row">
                 <div className="col-sm-6 col-12">
                     <div className="mb-3">
-                        <label htmlFor="owner" className="form-label mb-1">Nombre del titular</label>
+                        <label htmlFor="owner" className="form-label mb-1 text-salmon">Nombre del titular</label>
                         <input type="text" className="form-control" id="owner" name="owner" placeholder='Juan Perez' onChange={(e) => {
                             if (validateNumberLength(e.target.value, 30) && validateRegexAlpha(e.target.value)) {
                                 formik.handleChange(e)
@@ -93,7 +93,7 @@ const AddCard = () => {
                     </div>
                 </div>
                 <div className="col-sm-6 col-12">
-                    <label htmlFor="logo" className="form-label mb-1">Tipo de tarjeta</label>
+                    <label htmlFor="logo" className="form-label mb-1 text-salmon">Tipo de tarjeta</label>
                     <select className="form-select mb-3" name="logo" onChange={formik.handleChange} value={formik.values.logo}>
                         <option value="empty" disabled>Seleccione una opción</option>
                         <option value="amex">Amex</option>

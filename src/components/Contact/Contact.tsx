@@ -42,12 +42,12 @@ const Contact = () => {
     const validateRegexAlpha = (value: string) => /^[A-Za-z\s]+$/.test(value) || value.length === 0
 
     return (
-        <form className='FormGeneral' onSubmit={formik.handleSubmit}>
-            <h3 className='text-center mt-2 mb-4'>Ponte en contacto con nosotros</h3>
+        <form onSubmit={formik.handleSubmit}>
+            <h3 className='text-center mt-2 mb-4 text-salmon'>Ponte en contacto con nosotros</h3>
             <div className="row">
                 <div className="col-sm-6 col-12">
                     <div className="mb-3">
-                        <label htmlFor="name" className="form-label mb-1">Nombre</label>
+                        <label htmlFor="name" className="text-salmon form-label mb-1">Nombre</label>
                         <input type="text" className="form-control" id="name" name="name" placeholder='Juan' onChange={(e) => {
                             if (validateNumberLength(e.target.name, 12) && validateRegexAlpha(e.target.name)) {
                                 formik.handleChange(e)
@@ -58,7 +58,7 @@ const Contact = () => {
                 </div>
                 <div className="col-sm-6 col-12">
                     <div className="mb-3">
-                        <label htmlFor="lastName" className="form-label mb-1">Apellido</label>
+                        <label htmlFor="lastName" className="text-salmon form-label mb-1">Apellido</label>
                         <input type="text" className="form-control" id="lastName" name="lastName" placeholder='Perez' onChange={(e) => {
                             if (validateNumberLength(e.target.value, 12) && validateRegexAlpha(e.target.value)) {
                                 formik.handleChange(e)
@@ -71,7 +71,7 @@ const Contact = () => {
             <div className="row">
                 <div className="col-sm-6 col-12">
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label mb-1">Correo electrónico</label>
+                        <label htmlFor="email" className="text-salmon form-label mb-1">Correo electrónico</label>
                         <input type="email" className="form-control" id="email" name="email" placeholder='Juan@Perez.com' onChange={(e) => {
                             if (validateNumberLength(e.target.value, 40)) {
                                 formik.handleChange(e)
@@ -82,7 +82,7 @@ const Contact = () => {
                 </div>
                 <div className="col-sm-6 col-12">
                     <div className="mb-3">
-                        <label htmlFor="phone" className="form-label mb-1">Teléfono</label>
+                        <label htmlFor="phone" className="text-salmon form-label mb-1">Teléfono</label>
                         <input type="text" className="form-control" id="phone" name="phone" placeholder='5511112222' onChange={(e) => {
                             if (validateNumberLength(e.target.value, 10) && validateRegexNumber(e.target.value)) {
                                 formik.handleChange(e)
@@ -92,7 +92,7 @@ const Contact = () => {
                     </div>
                 </div>
                 <div className="col-12">
-                    <label htmlFor="message" className="form-label">Mensaje</label>
+                    <label htmlFor="message" className="text-salmon form-label">Mensaje</label>
                     <textarea className="form-control" id="message" name="message" onChange={(e) => {
                         if (validateNumberLength(e.target.value, 250)) {
                             formik.handleChange(e)
